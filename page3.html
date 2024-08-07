@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main_div{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="main_div"></div>
+
+
+
+    <script>
+        
+
+        var ResData = JSON.parse(localStorage.getItem("ResData"));
+
+        console.log(ResData);
+
+       
+            
+            var main_div = document.getElementById("main_div");
+            var divv = document.createElement("div");
+            divv.style.backgroundColor = "purple"
+            divv.style.width = "300px"
+            divv.style.paddingLeft = "70px";
+            divv.style.paddingTop="30px"
+
+            var img_tag = document.createElement("img");
+            img_tag.src = "https://tse2.mm.bing.net/th?id=OIP.e1KNYwnuhNwNj7_-98yTRwHaF7&pid=Api&P=0&h=180"
+
+            var h1get = document.createElement("h1");
+            h1get.innerText ="Name :"+ResData.name;
+            h1get.style.color = "White"
+
+            var awakeTime  = document.createElement("h3");
+            awakeTime.innerText = "Awake Time: "+ResData.time;
+            awakeTime.style.color = "white"
+
+            var goal = document.createElement("h3");
+            goal.innerText = "Goal : "+ResData.goal+" liters";
+            goal.style.color = "White";
+
+            divv.appendChild(img_tag)
+            divv.appendChild(h1get);
+            divv.appendChild(awakeTime);
+            divv.appendChild(goal);
+            main_div.appendChild(divv);
+
+            
+        
+    </script>
+</body>
+</html>

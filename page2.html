@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+    <script>
+        var data = JSON.parse(localStorage.getItem("Data"));
+        // console.log(data)
+        for(let i=0;i<data.length;i++){
+            var table_tag = document.createElement("table");
+            var tr_tag = document.createElement("tr");
+            var td1 = document.createElement("td");
+            td1.innerText = data[i].name;
+            td1.style.width = "200px";
+            td1.style.fontSize = "32px";
+            td1.style.backgroundColor ="red"
+
+            var td2 = document.createElement("td");
+            var btn_tag = document.createElement("button");
+            btn_tag.innerText = "Details";
+            btn_tag.addEventListener("click", hello);
+
+            td2.appendChild(btn_tag);
+            tr_tag.appendChild(td1);
+            tr_tag.appendChild(td2);
+            table_tag.appendChild(tr_tag);
+            document.body.appendChild(table_tag);
+
+            function hello(){
+                window.location.assign("./page3.html");
+                localStorage.setItem("ResData", JSON.stringify(data[i]));
+            }
+            
+            let newName = data[i].name;
+
+            let goal = data[i].goal
+
+            let waterMl = data[i].goal*1000;
+
+            var awake = data[i].time;
+            console.log(waterMl)
+
+             let remainder = waterMl/awake;
+            console.log(remainder);
+
+            waterComplete=0
+
+            let k = setInterval(()=>{
+                alert(newName+" Drink "+remainder+"ml of water to complete your goal for today");
+                window.navigator.vibrate(300)
+                
+                waterComplete+=remainder;
+                console.log(waterComplete)
+                if(waterComplete == waterMl){
+                    clearInterval(k)
+                }
+            },3600000);
+            
+        }
+    </script>
+</body>
+</html>
